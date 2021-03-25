@@ -92,6 +92,13 @@ case "addManufacturer":
 case "showAllManufacturer":
 	request.getRequestDispatcher("pages/listManufacturers.jsp").forward(request, response);
 	break;
+case "addProduct":
+	request.setAttribute("buttonName", "addProduct");
+	request.getRequestDispatcher("pages/product.jsp").forward(request, response);	
+	break;
+case "showAllProduct":
+	request.getRequestDispatcher("pages/listProducts.jsp").forward(request, response);
+	break;
 }
 	
 	

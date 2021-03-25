@@ -34,10 +34,8 @@ margin: 5px;
 				</tr>
 				<tr>
 <td><input type="submit" name="button" value="addManufacturer"></td>
-<!-- <td><input type="submit" name="button" value="updateManufacturer"></td>-->
 <td><input type="submit" name="button" value="showAllManufacturer"></td>
-<!-- <td><input type="submit" name="button" value="showOneManufacturer"></td>-->
-<!-- <td><input type="submit" name="button" value="deleteManufacturer"></td>-->
+
 
 			</tr>
 
@@ -46,10 +44,7 @@ margin: 5px;
 				</tr>
 				<tr>
 <td><input type="submit" name="button" value="addProduct"></td>
-<td><input type="submit" name="button" value="updateProduct"></td>
 <td><input type="submit" name="button" value="showAllProduct"></td>
-<td><input type="submit" name="button" value="showOneProduct"></td>
-<td><input type="submit" name="button" value="deleteProduct"></td>
 
 
 			</tr>
