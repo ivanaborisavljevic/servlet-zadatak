@@ -4,14 +4,37 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <listener>
+  	<listener-class>engineering.it.web.servletzadatak.listener.ContextListener</listener-class>
+  </listener>
   <servlet>
   	<servlet-name>NavigationServlet</servlet-name>
   	<display-name>NavigationServlet</display-name>
   	<description></description>
   	<servlet-class>engineering.it.web.servletzadatak.servlets.NavigationServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<display-name>LoginServlet</display-name>
+  	<description></description>
+  	<servlet-class>engineering.it.web.servletzadatak.servlets.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddCityServlet</servlet-name>
+  	<display-name>AddCityServlet</display-name>
+  	<description></description>
+  	<servlet-class>engineering.it.web.servletzadatak.servlets.AddCityServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>NavigationServlet</servlet-name>
   	<url-pattern>/NavigationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddCityServlet</servlet-name>
+  	<url-pattern>/AddCityServlet</url-pattern>
   </servlet-mapping>
 </web-app>
