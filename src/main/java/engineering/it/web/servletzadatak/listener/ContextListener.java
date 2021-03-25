@@ -1,13 +1,17 @@
 package engineering.it.web.servletzadatak.listener;
 
+import java.security.KeyStore.Entry;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import engineering.it.web.servletzadatak.model.City;
+import engineering.it.web.servletzadatak.model.Manufacturer;
 import engineering.it.web.servletzadatak.model.User;
 import engineering.it.web.servletzadatak.repositories.CityRepository;
+import engineering.it.web.servletzadatak.repositories.ManufacturerRepository;
 import engineering.it.web.servletzadatak.repositories.UserRepository;
 
 /**
@@ -45,6 +49,10 @@ public class ContextListener implements ServletContextListener {
     	System.out.println("Ubaceni gradovi u listu:");
     	for (City c: listCity)
     		System.out.println(c.getName());
+    Map<String, Manufacturer> mapManufacturers = ManufacturerRepository.getInstance().getMapManufacturers();
+    sce.getServletContext().setAttribute("mapManufacturers", mapManufacturers  );
+    for (java.util.Map.Entry<String, Manufacturer> e: mapManufacturers.entrySet()  )
+    	System.out.println(e.getKey());
     }
 	
 }

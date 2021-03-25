@@ -15,13 +15,13 @@ import engineering.it.web.servletzadatak.model.City;
  * Servlet implementation class AddCityServlet
  */
 @WebServlet(urlPatterns = { "/addCity" })
-public class AddCityServlet extends HttpServlet {
+public class CityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AddCityServlet() {
+	public CityServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

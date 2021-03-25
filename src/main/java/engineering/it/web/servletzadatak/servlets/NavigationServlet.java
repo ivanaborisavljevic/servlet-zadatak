@@ -50,6 +50,9 @@ public class NavigationServlet extends HttpServlet {
 	case "updateCity":
 		request.getRequestDispatcher("pages/updateCity.jsp").forward(request, response);
 		break;
+	case "addManufacturer":
+		request.getRequestDispatcher("pages/manufacturer.jsp").forward(request, response);
+		break;
 	}
 
 	}
@@ -81,6 +84,13 @@ case "showCity":
 	break;
 case "updateCity":
 	request.getRequestDispatcher("pages/listCity.jsp").forward(request, response);
+	break;
+case "addManufacturer":
+	request.setAttribute("buttonName", "addManufacturer");
+	request.getRequestDispatcher("pages/manufacturer.jsp").forward(request, response);
+	break;
+case "showAllManufacturer":
+	request.getRequestDispatcher("pages/listManufacturers.jsp").forward(request, response);
 	break;
 }
 	

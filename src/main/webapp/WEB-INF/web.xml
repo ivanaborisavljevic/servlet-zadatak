@@ -25,6 +25,18 @@
   	<description></description>
   	<servlet-class>engineering.it.web.servletzadatak.servlets.AddCityServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ManufacturerServlet</servlet-name>
+  	<display-name>ManufacturerServlet</display-name>
+  	<description></description>
+  	<servlet-class>engineering.it.web.servletzadatak.servlets.ManufacturerServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ProductServlet</servlet-name>
+  	<display-name>ProductServlet</display-name>
+  	<description></description>
+  	<servlet-class>engineering.it.web.servletzadatak.servlets.ProductServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>NavigationServlet</servlet-name>
   	<url-pattern>/NavigationServlet</url-pattern>
@@ -36,5 +48,13 @@
   <servlet-mapping>
   	<servlet-name>AddCityServlet</servlet-name>
   	<url-pattern>/AddCityServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ManufacturerServlet</servlet-name>
+  	<url-pattern>/ManufacturerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ProductServlet</servlet-name>
+  	<url-pattern>/ProductServlet</url-pattern>
   </servlet-mapping>
 </web-app>

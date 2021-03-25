@@ -3,6 +3,7 @@ package engineering.it.web.servletzadatak.model;
 public class City {
 private long postalCode;
 private String name;
+
 public City() {
 	// TODO Auto-generated constructor stub
 }
@@ -11,6 +12,7 @@ public City(long postalCode, String name) {
 	this.postalCode = postalCode;
 	this.name = name;
 }
+
 public long getPostalCode() {
 	return postalCode;
 }

@@ -34,10 +34,10 @@ margin: 5px;
 				</tr>
 				<tr>
 <td><input type="submit" name="button" value="addManufacturer"></td>
-<td><input type="submit" name="button" value="updateManufacturer"></td>
+<!-- <td><input type="submit" name="button" value="updateManufacturer"></td>-->
 <td><input type="submit" name="button" value="showAllManufacturer"></td>
-<td><input type="submit" name="button" value="showOneManufacturer"></td>
-<td><input type="submit" name="button" value="deleteManufacturer"></td>
+<!-- <td><input type="submit" name="button" value="showOneManufacturer"></td>-->
+<!-- <td><input type="submit" name="button" value="deleteManufacturer"></td>-->
 
 			</tr>
 
