@@ -15,22 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet (urlPatterns = {"/navigation"})
 public class NavigationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public NavigationServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String buttonValue = request.getParameter("button");
-		System.out.println("Button value:"+buttonValue);
-		////////////////////////////////////////////////////////////////////	
 	switch (buttonValue) {
 	case "login":
 		request.getRequestDispatcher("login").forward(request, response);
@@ -57,33 +49,19 @@ public class NavigationServlet extends HttpServlet {
 
 	}
 
-	
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	String buttonValue = request.getParameter("button");
-	System.out.println("Button value:"+buttonValue);
-	////////////////////////////////////////////////////////////////////	
 switch (buttonValue) {
 case "login":
 	request.getRequestDispatcher("login").forward(request, response);
 	break;
 case "addCity":
-	request.getRequestDispatcher("pages/addCity.jsp").forward(request, response);
+	request.setAttribute("buttonName", "addCity");
+	request.getRequestDispatcher("pages/city.jsp").forward(request, response);
 	break;
 case "showAllCity":
-	request.getRequestDispatcher("pages/listCity.jsp").forward(request, response);
-	break;
-case "deleteCity":
-	request.getRequestDispatcher("pages/listCity.jsp").forward(request, response);
-	break;
-case "showCity":
-	request.getRequestDispatcher("pages/listCity.jsp").forward(request, response);
-	break;
-case "updateCity":
-	request.getRequestDispatcher("pages/listCity.jsp").forward(request, response);
+	request.getRequestDispatcher("pages/listCities.jsp").forward(request, response);
 	break;
 case "addManufacturer":
 	request.setAttribute("buttonName", "addManufacturer");

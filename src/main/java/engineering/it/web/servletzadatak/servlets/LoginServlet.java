@@ -11,35 +11,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import engineering.it.web.servletzadatak.model.User;
 
-/**
- * Servlet implementation class LoginServlet
- */
+
 @WebServlet(urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		//provera
 		boolean success = false;
 		List<User> listUsers = (List<User>)request.getServletContext().getAttribute("listUsers");
 		for (User u :listUsers) {

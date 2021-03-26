@@ -16,49 +16,23 @@ import engineering.it.web.servletzadatak.repositories.ManufacturerRepository;
 import engineering.it.web.servletzadatak.repositories.ProductRepository;
 import engineering.it.web.servletzadatak.repositories.UserRepository;
 
-/**
- * Application Lifecycle Listener implementation class ContextListener
- *
- */
 public class ContextListener implements ServletContextListener {
 
-    /**
-     * Default constructor. 
-     */
-    public ContextListener() {
-        // TODO Auto-generated constructor stub
-    }
+	public ContextListener() {
+	}
 
-	/**
-     * @see ServletContextListener#contextDestroyed(ServletContextEvent)
-     */
-    public void contextDestroyed(ServletContextEvent sce)  { 
-         // TODO Auto-generated method stub
-    }
+	public void contextDestroyed(ServletContextEvent sce) {
+	}
 
-	/**
-     * @see ServletContextListener#contextInitialized(ServletContextEvent)
-     */
-    public void contextInitialized(ServletContextEvent sce)  { 
-    	System.out.println("=========================Metoda: Kontekst je inicijalizovan...=======================================");
-    	List<User> listUsers = UserRepository.getInstance().getListUsers();
-    	sce.getServletContext().setAttribute("listUsers", listUsers );
-    	System.out.println("Ubaceni korisnici u listu:");
-    	for (User u: listUsers)
-    		System.out.println(u.getFirstname());
-    	List<City> listCity = CityRepository.getInstance().getListCity();
-    	sce.getServletContext().setAttribute("listCity", listCity );
-    	System.out.println("Ubaceni gradovi u listu:");
-    	for (City c: listCity)
-    		System.out.println(c.getName());
-    Map<String, Manufacturer> mapManufacturers = ManufacturerRepository.getInstance().getMapManufacturers();
-    sce.getServletContext().setAttribute("mapManufacturers", mapManufacturers  );
-    for (java.util.Map.Entry<String, Manufacturer> e: mapManufacturers.entrySet()  )
-    	System.out.println(e.getKey());
-    Map<Long, Product> mapProducts = ProductRepository.getInstance().getMapProducts();
-    sce.getServletContext().setAttribute("mapProducts", mapProducts);
-    for (java.util.Map.Entry<Long, Product> e: mapProducts.entrySet()  )
-    	System.out.println(e.getKey());
-    }
-	
+	public void contextInitialized(ServletContextEvent sce) {
+		List<User> listUsers = UserRepository.getInstance().getListUsers();
+		sce.getServletContext().setAttribute("listUsers", listUsers);
+		List<City> listCity = CityRepository.getInstance().getListCity();
+		sce.getServletContext().setAttribute("listCity", listCity);
+		Map<String, Manufacturer> mapManufacturers = ManufacturerRepository.getInstance().getMapManufacturers();
+		sce.getServletContext().setAttribute("mapManufacturers", mapManufacturers);
+		Map<Long, Product> mapProducts = ProductRepository.getInstance().getMapProducts();
+		sce.getServletContext().setAttribute("mapProducts", mapProducts);
+	}
+
 }

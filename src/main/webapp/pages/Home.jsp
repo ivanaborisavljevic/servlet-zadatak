@@ -17,20 +17,17 @@ margin: 5px;
 <form action="${pageContext.request.contextPath}/navigation" method="post">
 		<table>
 			<tr>
-				<td>Grad</td>
+				<td>City</td>
 				</tr>
 				<tr>
 <td><input type="submit" name="button" value="addCity"></td>
-<td><input type="submit" name="button" value="updateCity"></td>
-<td><input type="submit" name="button" value="showAllCity"></td>
-<td><input type="submit" name="button" value="showCity"></td>
-<td><input type="submit" name="button" value="deleteCity"></td>
+  <td><input type="submit" name="button" value="showAllCity"></td>
 
 
 			</tr>
 
 <tr>
-				<td>Proizvodjac</td>
+				<td>Manufacturer</td>
 				</tr>
 				<tr>
 <td><input type="submit" name="button" value="addManufacturer"></td>
@@ -40,7 +37,7 @@ margin: 5px;
 			</tr>
 
 <tr>
-				<td>Proizvod</td>
+				<td>Product</td>
 				</tr>
 				<tr>
 <td><input type="submit" name="button" value="addProduct"></td>
