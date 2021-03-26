@@ -67,6 +67,9 @@ public class CityServlet extends HttpServlet {
 			request.setAttribute("buttonName", "showCity");
 			request.getRequestDispatcher("pages/city.jsp").forward(request, response);
 			break;
+		case "back":
+			request.getRequestDispatcher("pages/Home.jsp").forward(request, response);
+		break;
 
 		}
 		
@@ -93,18 +96,51 @@ public class CityServlet extends HttpServlet {
         String buttonValue = request.getParameter("button");
 		
         List<City> listCity = ((List<City>)request.getServletContext().getAttribute("listCity"));
-        City city = new City();		
+        City city = new City();	
+
+		String name = request.getParameter("name");
+		String postalCodeStr = request.getParameter("postalCode");
+		long postalCode=0;
 		switch (buttonValue){
 		
 		
 		case "addCity":
-		city.setPostalCode(Long.parseLong(request.getParameter("postalCode")));
-		city.setName(request.getParameter("name"));
-		listCity.add(city);
+			if (postalCodeStr==null || postalCodeStr.equals(""))
+
+			{
+				request.setAttribute("message", "Postal code must be number and not empty!");
+				request.setAttribute("buttonName", "addCity");
+				
+				request.getRequestDispatcher("/pages/city.jsp").forward(request, response);
+				break;
+			}
+			
+			try {
+			postalCode =Long.parseLong(postalCodeStr);
+			}
+			catch (NumberFormatException nfe) {
+				request.setAttribute("message", "Postal code must be number!");
+				request.setAttribute("buttonName", "addCity");
+				request.getRequestDispatcher("pages/city.jsp").forward(request, response);
+				break;
+			}
+			
+			if (validateAddUpdateCity(request, name, postalCode, city)) {
+				city.setName(name);
+				city.setPostalCode(postalCode);
+				request.setAttribute("message", "Successfully added city "+name);
+				}
+				else {
+					request.setAttribute("city", city);
+					request.setAttribute("buttonName", "addCity");
+					request.getRequestDispatcher("pages/city.jsp").forward(request, response);
+					break;
+				}
+			
+			listCity.add(city);
 	
 		
-		request.setAttribute("message", "Successfully added city");
-		request.getRequestDispatcher("pages/city.jsp").forward(request, response);;
+		request.getRequestDispatcher("pages/listCities.jsp").forward(request, response);;
 			break;
 			
 		case "updateCity":
@@ -112,8 +148,6 @@ public class CityServlet extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			city = listCity.get(id);
 			
-			String name = request.getParameter("name");
-			String postalCodeStr = request.getParameter("postalCode");
 			
 			if (postalCodeStr==null || postalCodeStr.equals(""))
 
@@ -126,7 +160,7 @@ public class CityServlet extends HttpServlet {
 				request.getRequestDispatcher("/pages/city.jsp").forward(request, response);
 				break;
 			}
-			long postalCode=0;
+			
 			try {
 			postalCode =Long.parseLong(postalCodeStr);
 			}
@@ -138,7 +172,7 @@ public class CityServlet extends HttpServlet {
 				request.getRequestDispatcher("pages/city.jsp").forward(request, response);
 				break;
 			}
-			if (validateUpdateCity(request, name, postalCode, city)) {
+			if (validateAddUpdateCity(request, name, postalCode, city)) {
 			city.setName(name);
 			city.setPostalCode(postalCode);
 			request.setAttribute("message", "Successfully updated city ");
@@ -153,12 +187,16 @@ public class CityServlet extends HttpServlet {
 			
 			request.getRequestDispatcher("pages/listCities.jsp").forward(request, response);
 				break;
-			
+		case "close":
+			request.getRequestDispatcher("pages/listCities.jsp").forward(request, response);
+			break;
 		}
+		
+		
 
 }
 
-	private boolean validateUpdateCity(HttpServletRequest request, String name, long postalCode, City city) {
+	private boolean validateAddUpdateCity(HttpServletRequest request, String name, long postalCode, City city) {
 		if (name==null|| name.equals("")) {
 			request.setAttribute("message", "City name cannot be empty");
 			return false;
@@ -168,7 +206,7 @@ public class CityServlet extends HttpServlet {
 		for (City c: listCity) {
 			if (c==city)
 				continue;
-			if (c.getName().equals(name)) {
+			if (c.getName().equalsIgnoreCase(name)) {
 				request.setAttribute("message", "City with name  "+name+" already exists");
 				return false;
 			}
